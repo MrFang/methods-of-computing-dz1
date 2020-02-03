@@ -52,9 +52,8 @@ def backwardPropagation(matrix):
             matrix[j] = sum(matrix[j], mult(-matrix[j][i], matrix[i]))
 
 def findDet(matrix):
-    m = copyMatrix(matrix)
-    forwardPropagation(m);
-    backwardPropagation(m);
+    forwardPropagation(matrix);
+    backwardPropagation(matrix);
 
     global stack
     det = 1

@@ -1,7 +1,9 @@
-from utils import readMatrixFromFile
+from utils import readMatrixFromFile, copyMatrix
 from findDeterminate import findDet
 
-a = readMatrixFromFile('input14_A.txt')
-det = findDet(a)
-print(a);
+A = readMatrixFromFile('input14_A.txt')
+mutableA = copyMatrix(A);
+det = findDet(mutableA)
+print(mutableA);
+print(A);
 
