@@ -1,11 +1,9 @@
-from utils import copyMatrix
-
 stack = list()
 
 def findMaxInColumn(column, matrix):
-    max = matrix[0][column]
-    max_row = 0
-    for row in range(len(matrix)):
+    max = matrix[column][column]
+    max_row = column
+    for row in range(column, len(matrix)):
         if (matrix[row][column] > max):
             max = matrix[row][column]
             max_row = row
@@ -13,9 +11,6 @@ def findMaxInColumn(column, matrix):
 
 def swapLines(x, y, matrix):
     temp = matrix[x]; matrix[x] = matrix[y]; matrix[y] = temp
-
-    global stack
-    stack.append(-1)
 
     return matrix;
 
@@ -34,10 +29,13 @@ def sum(row1, row2):
     return result
 
 def forwardPropagation(matrix):
+    global stack
+
     for column in range(0, len(matrix)):
 
         max_row = findMaxInColumn(column, matrix)
 
+        stack.append(-1)
         matrix = swapLines(column, max_row, matrix)
 
         stack.append(matrix[column][column])
