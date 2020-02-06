@@ -1,9 +1,9 @@
 from utils import readMatrixFromFile, copyMatrix
 from findDeterminate import findDet
 
-A = readMatrixFromFile('input14_A.txt')
-mutableA = copyMatrix(A);
-det = findDet(mutableA)
-print(mutableA);
-print(A);
+def reduceByIdentityMultipledByLambda(lambd, matrix):
+    for i in range(len(matrix)):
+        matrix[i][i] -= lambd
+    
+    return matrix
 
