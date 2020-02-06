@@ -12,7 +12,7 @@ def findMaxInColumn(column, matrix):
 def swapLines(x, y, matrix):
     temp = matrix[x]; matrix[x] = matrix[y]; matrix[y] = temp
 
-    return matrix;
+    return matrix
 
 def mult(num, row):
     r = list()
@@ -39,7 +39,7 @@ def forwardPropagation(matrix):
         matrix = swapLines(column, max_row, matrix)
 
         stack.append(matrix[column][column])
-        matrix[column] = mult(1/matrix[column][column], matrix[column]);
+        matrix[column] = mult(1/matrix[column][column], matrix[column])
 
         for num in range(column + 1, len(matrix)):
             matrix[num] = sum(matrix[num], mult(-matrix[num][column], matrix[column]))
@@ -50,8 +50,8 @@ def backwardPropagation(matrix):
             matrix[j] = sum(matrix[j], mult(-matrix[j][i], matrix[i]))
 
 def findDet(matrix):
-    forwardPropagation(matrix);
-    backwardPropagation(matrix);
+    forwardPropagation(matrix)
+    backwardPropagation(matrix)
 
     global stack
     det = 1
@@ -60,4 +60,5 @@ def findDet(matrix):
         det*=i
     
     stack.clear()
+    
     return det

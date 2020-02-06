@@ -7,3 +7,25 @@ def reduceByIdentityMultipledByLambda(lambd, matrix):
     
     return matrix
 
+def getDirection(determinates):
+
+    if (determinates['zero'] > 0):
+        if (determinates['left'] < determinates['zero']):
+            return 'left'
+        else:
+            return 'right'
+    else:
+        if (determinates['left'] > determinates['zero']):
+            return 'left'
+        else:
+            return 'right'
+
+A = readMatrixFromFile('input14_B.txt')
+
+determinates = {
+    'zero': findDet(copyMatrix(A)),
+    'left': findDet(reduceByIdentityMultipledByLambda(-1, copyMatrix(A))),
+    'right': findDet(reduceByIdentityMultipledByLambda(1, copyMatrix(A))),
+}
+
+direction = getDirection(determinates)
