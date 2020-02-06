@@ -59,4 +59,5 @@ def findDet(matrix):
     for i in reversed(stack):
         det*=i
     
+    stack.clear()
     return det
