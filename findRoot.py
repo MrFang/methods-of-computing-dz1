@@ -24,7 +24,32 @@ def findSecondLambda(direction, determinates):
 
     return lambd
 
-def findRoot(matrix):
+def findRoot(matrix,eps):
+    determinates = {
+        'zero': findDet(copyMatrix(matrix)),
+        'left': findDet(reduceByIdentityMultipledByLambda(-1, copyMatrix(matrix))),
+        'right': findDet(reduceByIdentityMultipledByLambda(1, copyMatrix(matrix))),
+    }
+    
+    #eps = 0.001
+    direction = getDirection(determinates)
+    segment = [0, findSecondLambda(direction, determinates)]
+
+    while abs(segment[1]-segment[0])>2*eps :
+        lambd = (segment[0] + segment[1]) / 2
+        det = findDet(reduceByIdentityMultipledByLambda(lambd, copyMatrix(matrix)))
+        det1 = findDet(reduceByIdentityMultipledByLambda(segment[0], copyMatrix(matrix)))
+        if det * det1 < 0:
+            segment[1] = lambd
+        else:
+            segment[0] = lambd
+        
+    root = sum(segment)/2
+    print('Lamda = ',root)
+    print('Det(B-l*E) = ',findDet(reduceByIdentityMultipledByLambda(root, copyMatrix(matrix))))
+    return root
+
+def findRoot1(matrix):
     determinates = {
         'zero': findDet(copyMatrix(matrix)),
         'left': findDet(reduceByIdentityMultipledByLambda(-1, copyMatrix(matrix))),
@@ -45,4 +70,6 @@ def findRoot(matrix):
             segment[1] = lambd
             determinates[direction] = det
 
-    return segment
+    root = sum(segment)/2
+    print(findDet(reduceByIdentityMultipledByLambda(root, copyMatrix(matrix))))
+    return root

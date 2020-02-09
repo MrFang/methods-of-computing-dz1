@@ -4,12 +4,9 @@ def readMatrixFromFile(filename):
     a = s.split('\n');
     a = a[1:];
     for idx, val in enumerate(a):
-        a[idx] = val.split(" ")
-
-    for i, v in enumerate(a):
-        for idx, item in enumerate(a[i]):
-            a[i][idx] = int(item)
-
+        a[idx] = val.split(" ")      
+    
+    a=[[int(elem) for elem in row]for row in a]
     return a
 
 def copyMatrix(matrix):
@@ -21,3 +18,9 @@ def copyMatrix(matrix):
             m[idx].append(item)
     
     return m
+
+def printMatrix(matrix , st):
+    print('Matrix ',st)
+    for row in matrix:
+        print(' '.join([str(elem) for elem in row]))
+    
