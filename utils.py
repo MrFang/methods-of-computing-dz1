@@ -7,6 +7,7 @@ def readMatrixFromFile(filename):
         a[idx] = val.split(" ")      
     
     a=[[int(elem) for elem in row]for row in a]
+
     return a
 
 def copyMatrix(matrix):

@@ -1,6 +1,6 @@
 from utils import readMatrixFromFile, copyMatrix, printMatrix
 from findDeterminate import findDet
-from findRoot import findRoot,findRoot1
+from findRoot import findRoot
 
 print('Task №1: ')
 A = readMatrixFromFile('input14_A.txt')
@@ -13,5 +13,4 @@ C = readMatrixFromFile('input14_C.txt')
 printMatrix(C,'C')
 print('Det C:',findDet(copyMatrix(C)),end = '\n\n')
 print('Task №2: ')
-findRoot(B,eps=float(input('Enter the epsilon: ')))
-
+findRoot(B)
