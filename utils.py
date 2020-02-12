@@ -22,6 +22,8 @@ def copyMatrix(matrix):
 
 def printMatrix(matrix , st):
     print('Matrix ',st)
-    for row in matrix:
-        print(' '.join([str(elem) for elem in row]))
-    
+    for idx, row in enumerate(matrix):
+        for idx, el in enumerate(row):
+            print("%5.2f" % el, end = ' ')
+
+        print()

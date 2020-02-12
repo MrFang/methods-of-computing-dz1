@@ -1,11 +1,12 @@
+from utils import printMatrix
 stack = list()
 
 def findMaxInColumn(column, matrix):
-    max = matrix[column][column]
+    max = abs(matrix[column][column])
     max_row = column
     for row in range(column, len(matrix)):
-        if (matrix[row][column] > max):
-            max = matrix[row][column]
+        if (abs(matrix[row][column]) > max):
+            max = abs(matrix[row][column])
             max_row = row
     return max_row
 
